@@ -15,8 +15,8 @@ repayment.addEventListener('input', () => {
 document.getElementById('btn').addEventListener('click', calculateResults);
 
 
-//CALCULATE BUTTON
-function calculateResults() {
+//CALCULATE BUTTON FUNCTION
+function calculateResults(e) {
 
     if (amount.value) {
         const calculatedInterest = (interest.value / 100) * amount.value
@@ -38,20 +38,30 @@ function calculateResults() {
         // tInterest.innerHTML = ""
         showError('Please check your Number');
     }
+    e.preventDefault();
 }
-function showError(error) {
-    //create Element
+function showError() {
+    //Create Element
     const errorDiv = document.createElement('div');
-    
-    //Get Element
-    
+
     //Add Class
     errorDiv.className = 'alert alert-danger';
-
+     
     //Create Text-Node
-    errorDiv.appendChild(document.createTextNode('error'));
+    errorDiv.appendChild(document.createTextNode('Please check your Number'));
 
+    //Get Element
+    const card = document.querySelector('.card');
+    const heading = document.querySelector('.heading');
+
+    //Insert Error above Heading
+    card.insertBefore(errorDiv, heading);
+    
+    setTimeout(clearError, 3000);
     // console.log(showError);
+}
+function clearError() {
+    document.querySelector('.alert').remove();
     
 }
 
