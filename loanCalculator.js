@@ -1,56 +1,56 @@
-const form = document.querySelector('#task-form');
-const taskInput = document.querySelector('#task');
-const taskList = document.querySelector('.collection');
-const clearTask = document.querySelector('.clear-tasks');
+// document.querySelector('.card').addEventListener('submit', calculateResults);
+const amount = document.getElementById('amount-input');
+const interest = document.getElementById('interest-input');
+const repayment  = document.getElementById('repayment-input');
+const mPayment = document.querySelector('.mPayment-display');
+const tPayment = document.querySelector('.tPayment-display');
+const tInterest = document.querySelector('.tInterest-display');
+
+//ONINPUT REPAYMENT should DISPLAY INTEREST-PERCENTAGE
+repayment.addEventListener('input', () => {
+    const displayInterest = repayment.value * 10  
+    interest.value  = displayInterest
+});
+
+document.getElementById('btn').addEventListener('click', calculateResults);
 
 
-// const addTask = document.querySelector('#add-task');
-const filterInput = document.querySelector('#filter');
-// const collection = document.querySelector('.collection');
+//CALCULATE BUTTON
+function calculateResults() {
 
-//LOAD ALL EVENTS LISTENERs 
-loadEventListeners();
+    if (amount.value) {
+        const calculatedInterest = (interest.value / 100) * amount.value
+        const calculatedRepayment = repayment.value * 12
 
-function loadEventListeners() {
-    //Add task Event
-    form.addEventListener('submit', addTask);
-}
+        tPayment.innerHTML = (Number(amount.value) + calculatedInterest).toFixed(2)
 
+        mPayment.innerHTML = (tPayment.innerHTML / calculatedRepayment).toFixed(2)
 
-//Add task
-function addTask(e) {
-    if (taskInput.value === '') {
-        alert('add a task')
+        tInterest.innerHTML = calculatedInterest.toFixed(2)
+
     }
 
-    //Create li element
-    const li = document.createElement('li');
+    else {
+        // repayment.value = ""
+        // interest.value = ""
+        // mPayment.innerHTML = ""
+        // tPayment.innerHTML = ""
+        // tInterest.innerHTML = ""
+        showError('Please check your Number');
+    }
+}
+function showError(error) {
+    //create Element
+    const errorDiv = document.createElement('div');
+    
     //Add Class
-    li.classList = 'collection-item';
-    //Create Text-Node and Append to li
-    li.appendChild(document.createTextNode(taskInput.value));
-    
-    //Create New Link Element
-    const link = document.createElement('a');
-    //Add Class 
-    link.classList = 'delete-item secondary-content';
-    //Add Icon Html
-    link.innerHTML = '<i class="fa fa-remove>"</i>';
-    //Append the link to li
-    li.appendChild('link');
-    //Append li to ul
-    taskList.appendChild('li');
-    //Clear Input
-    taskInput.value = '';
+    errorDiv.className = 'alert alert-danger';
 
+    //Create Text-Node
+    errorDiv.appendChild(document.createTextNode('error'));
 
-
-    
-
-    
-    e.preventDefault();
-    
-
+    // console.log(showError);
     
 }
-// console.log(li);
+
+
