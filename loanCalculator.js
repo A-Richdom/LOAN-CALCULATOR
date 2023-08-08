@@ -60,6 +60,7 @@ function showError() {
     //HIDE LOADING
     document.getElementById('loading').style.display = 'none';
 
+    //HIDE RESULTS
     document.querySelector('.results').style.display = 'none';
 
     //Create Element
