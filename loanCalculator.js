@@ -14,12 +14,13 @@ repayment.addEventListener('input', () => {
 
 document.getElementById('btn').addEventListener('click', (e) => {
 
-    //HIDE RESULTS
+    //Hide Results
     document.querySelector('.results').style.display = 'none';
 
-    //SHOW LOADING
+    //Show Loading
     document.getElementById('loading').style.display = 'block';
 
+    //SetTimeOut for Loading
     setTimeout(calculateResults, 2000)
 
     e.preventDefault();
@@ -39,28 +40,30 @@ function calculateResults(e) {
 
         tInterest.innerHTML = calculatedInterest.toFixed(2)
         
-       //SHOW RESULTS
+       //Show Results
         document.querySelector('.results').style.display = 'block';
 
-        //HIDE LOADING
+        //Hide Loading
         document.getElementById('loading').style.display = 'none'
 
     }
 
     else {
-        // repayment.value = ""
-        // interest.value = ""
+        repayment.value = ""
+        interest.value = ""
     
         showError('Please check your Number');
     }
     e.preventDefault();
 }
+
+//SHOW FUNCTION ERROR
 function showError() {
 
-    //HIDE LOADING
+    //Hide Loading
     document.getElementById('loading').style.display = 'none';
 
-    //HIDE RESULTS
+    //Hide Results
     document.querySelector('.results').style.display = 'none';
 
     //Create Element
