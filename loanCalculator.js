@@ -12,7 +12,18 @@ repayment.addEventListener('input', () => {
     interest.value  = displayInterest
 });
 
-document.getElementById('btn').addEventListener('click', calculateResults);
+document.getElementById('btn').addEventListener('click', (e) => {
+
+    //HIDE RESULTS
+    document.querySelector('.results').style.display = 'none';
+
+    //SHOW LOADING
+    document.getElementById('loading').style.display = 'block';
+
+    setTimeout(calculateResults, 2000)
+
+    e.preventDefault();
+});
 
 
 //CALCULATE BUTTON FUNCTION
@@ -27,20 +38,30 @@ function calculateResults(e) {
         mPayment.innerHTML = (tPayment.innerHTML / calculatedRepayment).toFixed(2)
 
         tInterest.innerHTML = calculatedInterest.toFixed(2)
+        
+       //SHOW RESULTS
+        document.querySelector('.results').style.display = 'block';
+
+        //HIDE LOADING
+        document.getElementById('loading').style.display = 'none'
 
     }
 
     else {
         // repayment.value = ""
         // interest.value = ""
-        // mPayment.innerHTML = ""
-        // tPayment.innerHTML = ""
-        // tInterest.innerHTML = ""
+    
         showError('Please check your Number');
     }
     e.preventDefault();
 }
 function showError() {
+
+    //HIDE LOADING
+    document.getElementById('loading').style.display = 'none';
+
+    document.querySelector('.results').style.display = 'none';
+
     //Create Element
     const errorDiv = document.createElement('div');
 
