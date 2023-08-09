@@ -1,4 +1,3 @@
-// document.querySelector('.card').addEventListener('submit', calculateResults);
 const amount = document.getElementById('amount-input');
 const interest = document.getElementById('interest-input');
 const repayment  = document.getElementById('repayment-input');
@@ -87,7 +86,6 @@ function showError() {
 }
 function clearError() {
     document.querySelector('.alert').remove();
-    
 }
 
 
