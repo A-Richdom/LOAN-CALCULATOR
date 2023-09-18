@@ -83,9 +83,10 @@ function showError() {
     
     setTimeout(clearError, 3000);
     // console.log(showError);
-}
+};
+
 function clearError() {
     document.querySelector('.alert').remove();
-}
+};
 
 
