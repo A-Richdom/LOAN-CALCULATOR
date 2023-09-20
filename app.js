@@ -82,7 +82,7 @@ function showError() {
     card.insertBefore(errorDiv, heading);
     
     setTimeout(clearError, 3000);
-    // console.log(showError);
+    //// console.log(showError);
 };
 
 function clearError() {
