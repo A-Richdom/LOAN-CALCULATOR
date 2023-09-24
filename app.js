@@ -59,7 +59,7 @@ function calculateResults(e) {
 //SHOW FUNCTION ERROR
 function showError() {
 
-    //Hide Loading
+    //Hide Loadingg
     document.getElementById('loading').style.display = 'none';
 
     //Hide Results
